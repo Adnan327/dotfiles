@@ -17,8 +17,6 @@
 
   "chat.agent.enabled": false,
 
-  "latex-workshop.view.pdf.invert": 0.85,
-
   "extensions.experimental.affinity": {
     "vscodevim.vim": 1
   },

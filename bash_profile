@@ -1,2 +1,3 @@
 #### LOAD .bashrc 
 [[ -f ~/.bashrc ]] && . ~/.bashrc
+

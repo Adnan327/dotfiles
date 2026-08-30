@@ -13,16 +13,3 @@ function notes {
 	Set-Location "$env:USERPROFILE\Meine Ablage\Vaults\Notes"
 }
 
-# Load conda only on first use to speed up terminal startup
-function conda {
-	Remove-Item Function:conda
-
-	#region conda initialize
-	# !! Contents within this block are managed by 'conda init' !!
-	If (Test-Path "C:\Users\Adnan\miniconda3\Scripts\conda.exe") {
-		(& "C:\Users\Adnan\miniconda3\Scripts\conda.exe" "shell.powershell" "hook") | Out-String | Invoke-Expression
-	}
-	#endregion
-
-	conda @args
-}
