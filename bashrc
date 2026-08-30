@@ -37,6 +37,8 @@ export PATH=$PATH:/usr/local/nvim/12.2
 
 export PATH=$PATH:/usr/local/texlive/2026/bin/x86_64-linux
 
+export PATH="$HOME/.local/bin:$PATH"
+
 #### SHELL OPTIONS
 shopt -s histappend
 shopt -s cdspell
