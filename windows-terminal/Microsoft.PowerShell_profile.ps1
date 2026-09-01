@@ -1,13 +1,21 @@
-# Prompt
-oh-my-posh init pwsh --config 'C:\Users\adnan\AppData\Local\Programs\oh-my-posh\themes\jblab_2021.omp.json' | Invoke-Expression
+##################
+### Oh my posh ###
+##################
 
-# load icons
+$theme = "robbyrussell"
+oh-my-posh init pwsh --config "$HOME\.omp-themes\$theme.omp.json" | Invoke-Expression
+
+
+#############
+### Icons ###
+#############
+
 Import-Module -Name Terminal-Icons
 
-# functions
-function backup_config {
-	py $env:USERPROFILE\configFiles\backup-config-skript.py
-}
+
+###############
+### Aliases ###
+###############
 
 function notes {
 	Set-Location "$env:USERPROFILE\Meine Ablage\Vaults\Notes"
