@@ -33,7 +33,7 @@
           "options": {
             "branch_icon": ""
           },
-		  "template": " <#5FAAE8>git:(</>{{ .HEAD }}<#5FAAE8>)</>{{ if or .Working.Changed .Staging.Changed }} <#FFEB3B>✗</>{{ end }}",
+		  "template": " <#3B78FF>git:(</>{{ .HEAD }}<#3B78FF>)</>{{ if or .Working.Changed .Staging.Changed }} <#F9F1A5>✗</>{{ end }}",
           "foreground": "#e74856",
           "type": "git",
           "style": "plain"

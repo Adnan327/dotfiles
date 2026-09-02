@@ -1,0 +1,116 @@
+# If not running interactively, don't do anything
+case $- in
+    *i*) ;;
+      *) return;;
+esac
+
+
+###################
+### Environment ###
+###################
+
+export HISTSIZE=5000  # history size
+export HISTFILESIZE=5000
+export HISTCONTROL=ignoreboth
+export PAGER=less
+export EDITOR=nvim
+export VISUAL=nvim
+export GREP_COLORS='ms=1;31'  # grep colors (red)
+
+export GROFF_NO_SGR=1
+
+# Colored man pages
+export LESS_TERMCAP_md=$'\e[1;38;5;210m'  # bold + red
+export LESS_TERMCAP_me=$'\e[0m'
+export LESS_TERMCAP_so=$'\e[1;33;44m'  # highlight + yellow + blue background
+export LESS_TERMCAP_se=$'\e[0m'
+export LESS_TERMCAP_us=$'\e[4;38;5;157m'  # underline + green
+export LESS_TERMCAP_ue=$'\e[0m'
+
+
+#############
+### Paths ###
+#############
+
+# Java
+export JAVA_HOME="/usr/local/java/jdk-23.0.2"
+export PATH="$JAVA_HOME/bin:$PATH"
+
+# Maven
+export MAVEN_HOME="/usr/local/maven/apache-maven-3.9.11"
+export PATH="$MAVEN_HOME/bin:$PATH"
+
+# uv
+export PATH="$HOME/.local/bin:$PATH"
+
+# Go
+export PATH="$PATH:/usr/local/go/bin"
+
+# Personal scripts
+export PATH="$PATH:~/bin"
+
+# Neovim
+export PATH="$PATH:/usr/local/nvim/12.2"
+
+# Latex
+export PATH="$PATH:/usr/local/texlive/2026/bin/x86_64-linux"
+
+
+#####################
+### Shell options ###
+#####################
+
+shopt -s histappend  # append to command history
+shopt -s cdspell  # correct spelling errors when using cd
+shopt -s checkwinsize  # update terminal dimensions after each command
+shopt -s dirspell  # correct directory spelling errors during completion (tab)
+shopt -s autocd  # change directory without using cd
+
+
+###############
+### Aliases ###
+###############
+
+alias grep='grep --color=auto'
+alias ls='ls -p --color=auto'
+alias bat='batcat --pager=cat'
+
+
+##############
+### Prompt ###
+##############
+
+# <user>@<hostname> <cwd> $
+
+# User
+PS1='\[\e[38;5;81m\]\u@\[\e[0m\]'
+
+# Hostname
+PS1+='\[\e[38;5;81m\]\h\[\e[0m\] '
+
+# pwd
+PS1+='\[\e[38;5;157m\]\w\[\e[0m\] '
+
+# Prompt character
+PS1+='\[\e[38;5;81m\]\$\[\e[0m\] '
+
+
+###########################
+### Load external files ###
+###########################
+
+# Load aliases
+source $HOME/.aliases 2>/dev/null
+
+# Load completion
+source /usr/share/bash-completion/bash_completion 2>/dev/null || 
+	source /etc/bash_completion 2>/dev/null
+
+
+##################
+### Oh my posh ###
+##################
+
+theme='robbyrussell'
+eval "$(oh-my-posh init bash --config ~/.omp-themes/$theme.omp.json)"
+
