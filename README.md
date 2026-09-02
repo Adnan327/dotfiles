@@ -5,6 +5,7 @@ Setup for:
 1. VSCode
 2. Windows Terminal
 3. Bash
+4. Zsh
 4. Neovim
 5. Git
 6. Latexmk
