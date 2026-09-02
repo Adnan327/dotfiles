@@ -2,14 +2,15 @@
 
 # dotfiles
 files=(
-	bash_profile
-	bashrc
+	./bash/bash_profile
+	./bash/bashrc
 	gitconfig
 	latexmkrc
+	zshrc
 )
 
 for file in "${files[@]}"; do 
-	ln -snfv "$PWD/$file" "$HOME/.$file"
+	ln -snfv "$PWD/$file" "$HOME/.${file##*/}"
 done
 
 # neovim
