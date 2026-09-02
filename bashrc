@@ -33,11 +33,11 @@ export LESS_TERMCAP_ue=$'\e[0m'
 #############
 
 # Java
-export JAVA_HOME="/usr/local/java/jdk-23.0.2"
+export JAVA_HOME="/usr/local/java/latest"
 export PATH="$JAVA_HOME/bin:$PATH"
 
 # Maven
-export MAVEN_HOME="/usr/local/maven/apache-maven-3.9.11"
+export MAVEN_HOME="/usr/local/maven/latest"
 export PATH="$MAVEN_HOME/bin:$PATH"
 
 # uv
@@ -50,7 +50,7 @@ export PATH="$PATH:/usr/local/go/bin"
 export PATH="$PATH:~/bin"
 
 # Neovim
-export PATH="$PATH:/usr/local/nvim/12.2"
+export PATH="$PATH:/usr/local/nvim/bin"
 
 # Latex
 export PATH="$PATH:/usr/local/texlive/2026/bin/x86_64-linux"
