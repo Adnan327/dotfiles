@@ -1,0 +1,77 @@
+#################
+### Oh my zsh ###
+#################
+
+export ZSH="$HOME/.oh-my-zsh"
+ZSH_THEME="" # no theme
+plugins=(
+	git
+	colored-man-pages
+)
+source $ZSH/oh-my-zsh.sh
+
+
+###################
+### Environment ###
+###################
+
+export HISTSIZE=5000
+export SAVEHIST=5000
+export HISTCONTROL=ignoreboth
+export PAGER=less
+export EDITOR=nvim
+export VISUAL=nvim
+
+
+#############
+### Paths ###
+#############
+
+# Java
+export JAVA_HOME="/usr/local/java/latest"
+export PATH="$JAVA_HOME/bin:$PATH"
+
+# Maven
+export MAVEN_HOME="/usr/local/maven/latest"
+export PATH="$MAVEN_HOME/bin:$PATH"
+
+# uv
+export PATH="$HOME/.local/bin:$PATH"
+
+# Go
+export PATH="$PATH:/usr/local/go/bin"
+
+# Personal scripts
+export PATH="$PATH:~/bin"
+
+# Neovim
+export PATH="$PATH:/usr/local/nvim/bin"
+
+# Latex
+export PATH="$PATH:/usr/local/texlive/2026/bin/x86_64-linux"
+
+
+###############
+### Aliases ###
+###############
+
+alias grep='grep --color=auto'
+alias ls='ls -p --color=auto'
+alias bat='batcat --pager=cat'
+
+
+###########################
+### Load external files ###
+###########################
+
+# Load aliases
+source $HOME/.aliases 2>/dev/null
+
+
+##################
+### Oh my posh ###
+##################
+
+theme='robbyrussell'
+eval "$(oh-my-posh init zsh --config ~/.omp-themes/$theme.omp.json)"
+
