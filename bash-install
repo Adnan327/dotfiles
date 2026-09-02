@@ -7,13 +7,19 @@ files=(
 	gitconfig
 	latexmkrc
 	zshrc
+	omp-themes
 )
 
 for file in "${files[@]}"; do 
 	ln -snfv "$PWD/$file" "$HOME/.${file##*/}"
 done
 
-# neovim
+# Neovim
 ln -snfv "$HOME/.dotfiles/nvim" "$HOME/.config/nvim"
+
+# Install oh my posh
+if ! command -v oh-my-posh 2> /dev/null; then 
+	curl -s https://ohmyposh.dev/install.sh | bash -s 
+fi
 
 printf '\n\e[32minstallation complete\e[0m\n'
