@@ -42,7 +42,7 @@ export PATH="$HOME/.local/bin:$PATH"
 export PATH="$PATH:/usr/local/go/bin"
 
 # Personal scripts
-export PATH="$PATH:~/bin"
+export PATH="$PATH:$HOME/bin"
 
 # Neovim
 export PATH="$PATH:/usr/local/nvim/bin"
