@@ -50,6 +50,9 @@ export PATH="$PATH:/usr/local/nvim/bin"
 # Latex
 export PATH="$PATH:/usr/local/texlive/2026/bin/x86_64-linux"
 
+# Racket
+export PATH="$PATH:/usr/local/racket/bin"
+
 
 ###############
 ### Aliases ###
