@@ -74,7 +74,8 @@ shopt -s autocd  # change directory without using cd
 
 alias grep='grep --color=auto'
 alias ls='ls -p --color=auto'
-alias bat='batcat --pager=cat'
+
+command -v batcat &> /dev/null && alias bat='batcat --pager=cat'
 
 
 ##############
@@ -101,19 +102,25 @@ PS1+='\[\e[38;5;81m\]\$\[\e[0m\] '
 ###########################
 
 # Load aliases
-source $HOME/.aliases 2>/dev/null
+[[ -f "$HOME/.aliases" ]] && source "$HOME/.aliases"
 
 # Load completion
-source /usr/share/bash-completion/bash_completion 2>/dev/null || 
-	source /etc/bash_completion 2>/dev/null
+if [[ -f "/usr/share/bash-completion/bash_completion" ]]; then
+	source "/usr/share/bash-completion/bash_completion"
+elif [[ -f "/etc/bash_completion" ]]; then
+	source "/etc/bash_completion"
+fi
 
 
 ##################
 ### Oh my posh ###
 ##################
 
-theme='robbyrussell'
-eval "$(oh-my-posh init bash --config ~/.omp-themes/$theme.omp.json)"
+if command -v oh-my-posh &> /dev/null; then
+	theme='robbyrussell'
+	eval "$(oh-my-posh init bash --config "$HOME/.omp-themes/$theme.omp.json")"
+fi
+
 
 #################
 ### Fastfetch ###
