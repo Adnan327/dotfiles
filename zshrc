@@ -78,3 +78,9 @@ source $HOME/.aliases 2>/dev/null
 theme='robbyrussell'
 eval "$(oh-my-posh init zsh --config ~/.omp-themes/$theme.omp.json)"
 
+#################
+### Fastfetch ###
+#################
+
+command -v fastfetch &> /dev/null && fastfetch
+
