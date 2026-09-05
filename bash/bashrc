@@ -115,3 +115,9 @@ source /usr/share/bash-completion/bash_completion 2>/dev/null ||
 theme='robbyrussell'
 eval "$(oh-my-posh init bash --config ~/.omp-themes/$theme.omp.json)"
 
+#################
+### Fastfetch ###
+#################
+
+command -v fastfetch &> /dev/null && fastfetch
+ 
