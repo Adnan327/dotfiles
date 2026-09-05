@@ -8,7 +8,7 @@ plugins=(
 	git
 	colored-man-pages
 )
-source $ZSH/oh-my-zsh.sh
+source "$ZSH/oh-my-zsh.sh"
 
 
 ###################
@@ -17,7 +17,6 @@ source $ZSH/oh-my-zsh.sh
 
 export HISTSIZE=5000
 export SAVEHIST=5000
-export HISTCONTROL=ignoreboth
 export PAGER=less
 export EDITOR=nvim
 export VISUAL=nvim
@@ -60,7 +59,8 @@ export PATH="$PATH:/usr/local/racket/bin"
 
 alias grep='grep --color=auto'
 alias ls='ls -p --color=auto'
-alias bat='batcat --pager=cat'
+
+command -v batcat &> /dev/null && alias bat='batcat --pager=cat'
 
 
 ###########################
@@ -68,15 +68,18 @@ alias bat='batcat --pager=cat'
 ###########################
 
 # Load aliases
-source $HOME/.aliases 2>/dev/null
+[[ -f "$HOME/.aliases" ]] && source "$HOME/.aliases"
 
 
 ##################
 ### Oh my posh ###
 ##################
 
-theme='robbyrussell'
-eval "$(oh-my-posh init zsh --config ~/.omp-themes/$theme.omp.json)"
+if command -v oh-my-posh &> /dev/null; then
+	theme='robbyrussell'
+	eval "$(oh-my-posh init zsh --config "$HOME/.omp-themes/$theme.omp.json")"
+fi
+
 
 #################
 ### Fastfetch ###
