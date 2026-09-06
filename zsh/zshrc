@@ -75,15 +75,13 @@ command -v batcat &> /dev/null && alias bat='batcat --pager=cat'
 ### Oh my posh ###
 ##################
 
-if command -v oh-my-posh &> /dev/null; then
-	theme='robbyrussell'
-	eval "$(oh-my-posh init zsh --config "$HOME/.omp-themes/$theme.omp.json")"
-fi
+theme='robbyrussell'
+eval "$(oh-my-posh init zsh --config "$HOME/.omp-themes/$theme.omp.json")"
 
 
 #################
 ### Fastfetch ###
 #################
 
-command -v fastfetch &> /dev/null && fastfetch
+fastfetch
 
