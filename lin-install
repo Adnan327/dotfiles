@@ -1,6 +1,57 @@
 #!/usr/bin/env bash
 
 
+############################
+### Install applications ###
+############################
+
+# Check if application is in not_apt array
+is_not_apt() {
+	local program="$1"
+
+	for x in "${not_apt[@]}"; do
+		[[ "$program" == "$x" ]] && return 0
+	done
+
+	return 1
+}
+
+programs=(
+	# dependencies
+	"unzip"
+	"curl"
+
+	# dev
+	"neovim"
+	"git"
+	"zsh"
+	"fastfetch"
+)
+
+# Applications that should not be installed with apt
+not_apt=(
+	"neovim"
+)
+
+# Update apt packages
+command -v apt &> /dev/null && sudo apt update
+
+for program in "${programs[@]}"; do
+	if command -v apt &> /dev/null; then
+		is_not_apt "$program" && continue
+		sudo apt install -y "$program"
+	elif command -v pacman &> /dev/null; then
+		# --needed = skip packages that are already up to date
+		sudo pacman -S --needed "$program"
+	fi
+done
+
+# Install oh-my-posh
+if ! command -v oh-my-posh &> /dev/null; then 
+	curl -s https://ohmyposh.dev/install.sh | bash -s 
+fi
+
+
 ################
 ### Symlinks ###
 ################
@@ -19,22 +70,22 @@ for file in "${files[@]}"; do
 	ln -snfv "$PWD/$file" "$HOME/.${file##*/}"
 done
 
-[[ -d $HOME/.config ]] || mkdir $HOME/.config  # check if .config exists
+mkdir -p "$HOME/.config"  # create .config if it doesn't exist
 
 # Neovim
-ln -snfv "$HOME/.dotfiles/nvim" "$HOME/.config/nvim"
+ln -snfv "$PWD/nvim" "$HOME/.config/nvim"
 
 # Fastfetch
-ln -snfv "$HOME/.dotfiles/fastfetch" "$HOME/.config/fastfetch"
+ln -snfv "$PWD/fastfetch" "$HOME/.config/fastfetch"
 
 
-####################
-### Applications ###
-####################
-
-# Install oh my posh
-if ! command -v oh-my-posh 2> /dev/null; then 
-	curl -s https://ohmyposh.dev/install.sh | bash -s 
+# Print list of application that should be installed manually
+if command -v apt &> /dev/null; then
+	printf '\nThe following applications should be installed manually:\n'
+	for program in "${not_apt[@]}"; do
+		printf '\t- %s\n' "$program"
+	done
 fi
 
 printf '\n\e[32minstallation complete\e[0m\n'
+
