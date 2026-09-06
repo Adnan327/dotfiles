@@ -19,6 +19,8 @@ for file in "${files[@]}"; do
 	ln -snfv "$PWD/$file" "$HOME/.${file##*/}"
 done
 
+[[ -d $HOME/.config ]] || mkdir $HOME/.config  # check if .config exists
+
 # Neovim
 ln -snfv "$HOME/.dotfiles/nvim" "$HOME/.config/nvim"
 
