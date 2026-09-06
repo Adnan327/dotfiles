@@ -2,19 +2,19 @@
 ### Install applications ###
 ############################
 
-$programms = @(
-	"Git.Git",                     # git
-	"JanDeDobbeleer.OhMyPosh",     # oh-my-posh
-	"Fastfetch-cli.Fastfetch",     # fastfetch
-	"Neovim.Neovim",               # neovim
-	"Microsoft.WindowsTerminal",   # windows terminal
-	"Microsoft.VisualStudioCode",  # vscode
-	"Microsoft.PowerShell"         # powershell
+$programs = @(
+	"Git.Git"                     # git
+	"JanDeDobbeleer.OhMyPosh"     # oh-my-posh
+	"Fastfetch-cli.Fastfetch"     # fastfetch
+	"Neovim.Neovim"               # neovim
+	"Microsoft.WindowsTerminal"   # windows terminal
+	"Microsoft.VisualStudioCode"  # vscode
+	"Microsoft.PowerShell"        # powershell
 )
 
-# Installs programms only for the current user
-foreach ($programm in $programms) {
-	winget install $programm --scope user
+# Installs only programs with this exact ID
+foreach ($program in $programs) {
+	winget install --id $program --exact
 }
 
 
@@ -30,7 +30,7 @@ $modules = @(
 # Installs modules only for the current user
 foreach ($module in $modules) {
 	if (-not (Get-Module -ListAvailable -Name $module)) {
-		Install-PSResource -Name $module -Scope Currentuser
+		Install-PSResource -Name $module -Scope CurrentUser
 	}
 }
 
