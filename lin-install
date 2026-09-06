@@ -52,6 +52,10 @@ if ! command -v oh-my-posh &> /dev/null; then
 	curl -s https://ohmyposh.dev/install.sh | bash -s 
 fi
 
+# Install oh-my-zsh
+if [[ ! -d "$HOME/.oh-my-zsh" ]]; then
+	sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+fi
 
 ################
 ### Symlinks ###
