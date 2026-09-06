@@ -1,3 +1,23 @@
+############################
+### Install applications ###
+############################
+
+$programms = @(
+	"Git.Git",                     # git
+	"JanDeDobbeleer.OhMyPosh",     # oh-my-posh
+	"Fastfetch-cli.Fastfetch",     # fastfetch
+	"Neovim.Neovim",               # neovim
+	"Microsoft.WindowsTerminal",   # windows terminal
+	"Microsoft.VisualStudioCode",  # vscode
+	"Microsoft.PowerShell"         # powershell
+)
+
+# Installs programms only for the current user
+foreach ($programm in $programms) {
+	winget install $programm --scope user
+}
+
+
 ################
 ### Symlinks ###
 ################
@@ -65,3 +85,7 @@ $params = @{
 New-Item @params
 
 # TODO: add latexmkrc
+
+
+Write-Host "Installation finished!"
+
