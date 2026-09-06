@@ -18,6 +18,7 @@ is_not_apt() {
 
 programs=(
 	# dependencies
+	"sudo"
 	"unzip"
 	"curl"
 
