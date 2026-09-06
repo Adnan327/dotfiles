@@ -1,12 +1,17 @@
 #!/usr/bin/env bash
 
+
+################
+### Symlinks ###
+################
+
 # dotfiles
 files=(
-	./bash/bash_profile
-	./bash/bashrc
+	bash/bash_profile
+	bash/bashrc
 	gitconfig
 	latexmkrc
-	zshrc
+	zsh/zshrc
 	omp-themes
 )
 
@@ -16,6 +21,14 @@ done
 
 # Neovim
 ln -snfv "$HOME/.dotfiles/nvim" "$HOME/.config/nvim"
+
+# Fastfetch
+ln -snfv "$HOME/.dotfiles/fastfetch" "$HOME/.config/fastfetch"
+
+
+####################
+### Applications ###
+####################
 
 # Install oh my posh
 if ! command -v oh-my-posh 2> /dev/null; then 
