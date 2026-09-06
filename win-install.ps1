@@ -18,6 +18,23 @@ foreach ($programm in $programms) {
 }
 
 
+#######################
+### Install modules ###
+#######################
+
+$modules = @(
+	"Terminal-Icons"
+	"Microsoft.WinGet.CommandNotFound"
+)
+
+# Installs modules only for the current user
+foreach ($module in $modules) {
+	if (-not (Get-Module -ListAvailable -Name $module)) {
+		Install-PSResource -Name $module -Scope Currentuser
+	}
+}
+
+
 ################
 ### Symlinks ###
 ################
