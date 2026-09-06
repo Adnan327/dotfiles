@@ -116,15 +116,13 @@ fi
 ### Oh my posh ###
 ##################
 
-if command -v oh-my-posh &> /dev/null; then
-	theme='robbyrussell'
-	eval "$(oh-my-posh init bash --config "$HOME/.omp-themes/$theme.omp.json")"
-fi
+theme='robbyrussell'
+eval "$(oh-my-posh init bash --config "$HOME/.omp-themes/$theme.omp.json")"
 
 
 #################
 ### Fastfetch ###
 #################
 
-command -v fastfetch &> /dev/null && fastfetch
+fastfetch
  
