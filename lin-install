@@ -43,7 +43,7 @@ for program in "${programs[@]}"; do
 		sudo apt install -y "$program"
 	elif command -v pacman &> /dev/null; then
 		# --needed = skip packages that are already up to date
-		sudo pacman -S --needed "$program"
+		sudo pacman -S --needed --noconfirm "$program"
 	fi
 done
 
