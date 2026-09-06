@@ -1,6 +1,13 @@
 #!/usr/bin/env bash
 
 
+# Check if sudo is installed
+if ! command -v sudo &> /dev/null; then
+	echo "Install sudo before running this script!"
+	exit 1
+fi
+
+
 ############################
 ### Install applications ###
 ############################
